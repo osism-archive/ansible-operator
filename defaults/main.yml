@@ -1,0 +1,6 @@
+---
+operator_user: "{{ ansible_user }}"
+operator_authorized_keys: []
+
+# NOTE: Use "mkpasswd --method=sha-512" to generate a password
+# operator_password:

@@ -1,0 +1,6 @@
+.molecule
+.tox
+*.retry
+tests/__pycache__
+.cache
+.vagrant

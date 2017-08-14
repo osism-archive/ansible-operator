@@ -1,0 +1,50 @@
+# This file is subject to the terms and conditions defined in file 'LICENSE',
+# which is part of this repository.
+---
+- name: Create operator user
+  user:
+    name: "{{ operator_user }}"
+    comment: OSISM operator user
+    shell: /bin/bash
+  become: true
+
+- name: Copy operator user sudoers file
+  template:
+    src: operator-sudoers.j2
+    dest: "/etc/sudoers.d/{{ operator_user }}-sudoers"
+    owner: root
+    group: root
+    mode: 0440
+  become: true
+
+- name: Set ssh authorized keys
+  authorized_key:
+    key: "{{ item }}"
+    user: "{{ operator_user }}"
+  with_items: "{{ operator_authorized_keys }}"
+  become: true
+
+# NOTE: http://stackoverflow.com/questions/33343215/how-to-get-remote-users-home-directory-in-ansible
+- name: Get home directory of operator user
+  shell: "getent passwd {{ operator_user }} | cut -d: -f6"
+  changed_when: false
+  register: operator_home
+
+- name: Set language variables in .bashrc configuration file
+  lineinfile:
+    dest: "{{ operator_home.stdout }}/.bashrc"
+    line: "{{ item }}"
+    create: yes
+  with_items:
+    - "export LANGUAGE=en_US.UTF-8"
+    - "export LANG=en_US.UTF-8"
+    - "export LC_ALL=en_US.UTF-8"
+  become: true
+
+- name: Set password of operator user
+  user:
+    name: "{{ operator_user }}"
+    update_password: always
+    password: "{{ operator_password }}"
+  when: operator_password is defined and operator_password != ""
+  become: true

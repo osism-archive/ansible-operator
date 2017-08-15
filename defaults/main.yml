@@ -1,5 +1,8 @@
 ---
 operator_user: "{{ ansible_user }}"
+operator_group: "{{ ansible_user }}"
+operator_user_id: 45000
+operator_group_id: 45000
 operator_authorized_keys: []
 
 # NOTE: Use "mkpasswd --method=sha-512" to generate a password

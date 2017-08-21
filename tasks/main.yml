@@ -57,3 +57,4 @@
     password: "{{ operator_password }}"
   when: operator_password is defined and operator_password != ""
   become: true
+  no_log: true

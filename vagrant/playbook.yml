@@ -1,5 +1,3 @@
-# This file is subject to the terms and conditions defined in file 'LICENSE',
-# which is part of this repository.
 ---
 - name: Install python version 2 on ubuntu
   hosts: all
@@ -20,4 +18,4 @@
     operator_password: "$6$8w7/5t2r37WS$61H9A/0I68kgvEjTthmQzOOj3Yu2mKlhd8ehudSmqi4QHiKXvh5qtXPiYhKhVUdUI2MvlL8VAOhVDksB.gGZD0"
 
   roles:
-  - role: ../../ansible-operator
+    - role: ../../ansible-operator

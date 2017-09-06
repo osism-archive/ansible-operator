@@ -1,9 +1,9 @@
 ---
-#- name: Playbook for preparations
-#  hosts: all
+# - name: Playbook for preparations
+#   hosts: all
 #
-#  roles:
-#  - role: osism.docker
+#   roles:
+#     - role: osism.docker
 
 - name: Playbook for role testing
   hosts: all
@@ -12,4 +12,4 @@
     operator_password: "$6$8w7/5t2r37WS$61H9A/0I68kgvEjTthmQzOOj3Yu2mKlhd8ehudSmqi4QHiKXvh5qtXPiYhKhVUdUI2MvlL8VAOhVDksB.gGZD0"
 
   roles:
-  - role: ansible-operator
+    - role: ansible-operator

@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
     ubuntu.vm.synced_folder ".", "/vagrant", disabled: true
     ubuntu.vm.provision "ansible" do |ansible|
       ansible.playbook = "playbook.yml"
+      ansible.galaxy_role_file = '../molecule/default/requirements.yml'
     end
     # NOTE: https://groups.google.com/forum/#!topic/vagrant-up/eZljy-bddoI
     #       This will remove the ubuntu-xenial-16.04-cloudimg-console.log file

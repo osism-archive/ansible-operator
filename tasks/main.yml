@@ -31,6 +31,7 @@
     user: "{{ operator_user }}"
   with_items: "{{ operator_authorized_keys }}"
   become: true
+  no_log: true
 
 # NOTE: http://stackoverflow.com/questions/33343215/how-to-get-remote-users-home-directory-in-ansible
 - name: Get home directory of operator user

@@ -3,6 +3,11 @@ sudo: false
 
 language: python
 
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - .tox
+
 before_install:
   - openssl aes-256-cbc -K $encrypted_70d041fd4d91_key -iv $encrypted_70d041fd4d91_iv -in molecule/default/clouds.yml.enc -out molecule/default/clouds.yml -d
 

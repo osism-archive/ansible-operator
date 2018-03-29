@@ -56,6 +56,14 @@
     - "export LC_ALL=en_US.UTF-8"
   become: true
 
+- name: Copy private ssh key
+  copy:
+    content: "{{ operator_private_key }}"
+    dest: "{{ operator_home.stdout }}/id_rsa"
+    owner: "{{ operator_user }}"
+    mode: 0600
+  no_log: true
+
 - name: Set password of operator user
   user:
     name: "{{ operator_user }}"

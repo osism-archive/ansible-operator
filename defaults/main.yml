@@ -1,12 +1,19 @@
 ---
 operator_user: dragon
-operator_group: dragon
 operator_user_id: 45000
+
+operator_group: dragon
 operator_group_id: 45000
-operator_authorized_keys: []
+
 operator_groups:
   - adm
   - sudo
+
+operator_authorized_keys: []
+operator_private_key: |
+  -----BEGIN RSA PRIVATE KEY-----
+  ...
+  -----END RSA PRIVATE KEY-----
 
 # NOTE: Use "mkpasswd --method=sha-512" to generate a password
 # operator_password:

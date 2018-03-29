@@ -19,6 +19,7 @@
     name: "{{ operator_user }}"
     groups: "{{ item }}"
     append: yes
+  become: true
   with_items: "{{ operator_groups }}"
 
 - name: Copy operator user sudoers file

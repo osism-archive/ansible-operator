@@ -14,6 +14,13 @@
     group: "{{ operator_group }}"
   become: true
 
+- name: Add operator user to additional groups
+  user:
+    name: "{{ operator_user }}"
+    groups: "{{ item }}"
+    append: yes
+  with_items: "{{ operator_groups }}"
+
 - name: Copy operator user sudoers file
   template:
     src: operator-sudoers.j2

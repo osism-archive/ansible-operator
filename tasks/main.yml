@@ -34,7 +34,11 @@
 
 # NOTE: http://stackoverflow.com/questions/33343215/how-to-get-remote-users-home-directory-in-ansible
 - name: Get home directory of operator user
-  shell: "getent passwd {{ operator_user }} | cut -d: -f6"
+  shell: |
+    set -o pipefail
+    getent passwd {{ operator_user }} | cut -d: -f6
+  args:
+    executable: /bin/bash
   changed_when: false
   register: operator_home
   become: true
@@ -72,6 +76,6 @@
     name: "{{ operator_user }}"
     update_password: always
     password: "{{ operator_password }}"
-  when: operator_password is defined and operator_password != ""
+  when: operator_password is defined and operator_password
   become: true
   no_log: true

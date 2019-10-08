@@ -60,7 +60,7 @@
     owner: "{{ operator_user }}"
     group: "{{ operator_group }}"
     state: directory
-    mode: 0750
+    mode: 0700
   become: true
 
 - name: Set ssh authorized keys

@@ -13,16 +13,6 @@ jobs:
     - stage: run tests
       script: tox -e $TOX_ENV
       env:
-        - TOX_ENV=ansible27-xenial
-      python: 3.6
-    - stage: run tests
-      script: tox -e $TOX_ENV
-      env:
-        - TOX_ENV=ansible27-bionic
-      python: 3.6
-    - stage: run tests
-      script: tox -e $TOX_ENV
-      env:
         - TOX_ENV=ansible28-xenial
       python: 3.6
     - stage: run tests
@@ -33,12 +23,22 @@ jobs:
     - stage: run tests
       script: tox -e $TOX_ENV
       env:
+        - TOX_ENV=ansible28-focal
+      python: 3.6
+    - stage: run tests
+      script: tox -e $TOX_ENV
+      env:
         - TOX_ENV=ansible29-xenial
       python: 3.6
     - stage: run tests
       script: tox -e $TOX_ENV
       env:
         - TOX_ENV=ansible29-bionic
+      python: 3.6
+    - stage: run tests
+      script: tox -e $TOX_ENV
+      env:
+        - TOX_ENV=ansible29-focal
       python: 3.6
     - stage: post processing
       python: 3.6

@@ -9,7 +9,7 @@
   user:
     name: "{{ operator_user }}"
     comment: OSISM operator user
-    shell: /bin/bash
+    shell: "{{ operator_shell }}"
     uid: "{{ operator_user_id }}"
     group: "{{ operator_group }}"
   become: true

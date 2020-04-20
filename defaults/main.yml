@@ -9,6 +9,8 @@ operator_groups:
   - adm
   - sudo
 
+operator_shell: /bin/bash
+
 operator_authorized_keys: []
 
 # NOTE: Use "mkpasswd --method=sha-512" to generate a password

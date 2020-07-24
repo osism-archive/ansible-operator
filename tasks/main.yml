@@ -20,7 +20,7 @@
     groups: "{{ item }}"
     append: yes
   become: true
-  with_items: "{{ operator_groups }}"
+  loop: "{{ operator_groups }}"
 
 - name: Copy operator user sudoers file
   template:
@@ -48,7 +48,7 @@
     dest: "{{ operator_home.stdout }}/.bashrc"
     line: "{{ item }}"
     create: yes
-  with_items:
+  loop:
     - "export LANGUAGE=en_US.UTF-8"
     - "export LANG=en_US.UTF-8"
     - "export LC_ALL=en_US.UTF-8"
@@ -67,7 +67,7 @@
   authorized_key:
     key: "{{ item }}"
     user: "{{ operator_user }}"
-  with_items: "{{ operator_authorized_keys }}"
+  loop: "{{ operator_authorized_keys }}"
   become: true
   no_log: true
 
